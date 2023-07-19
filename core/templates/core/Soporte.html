@@ -1,0 +1,31 @@
+{% extends 'core/principal.html' %}
+{% block content %}
+<div class="productocont">
+{% if messages %}
+
+    {% for m in messages %}
+        <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible" {% endif %}>
+            {{m}}
+        </div>
+    {% endfor %}
+
+{% endif %}
+    <div class="soporte">
+    <form action="/enviarReporte/" method="POST" enctype="multipart/form-data" name="formsoporte" id="formsoporte">{% csrf_token %}
+        <p id="reporte-tiene-problema">¿Tiene algun problema? Repórtelo para que podamos ayudarlo </p>
+        <br>
+        <p>Ingrese Título.</p>
+        <input  class="entrada-soporte" type="text" id="tituloform" name="tituloform" placeholder="Titulo del Problema" size="100" required>
+        <p>Ingrese Categoria.</p>
+        <input  class="entrada-soporte" type="text" id="categoriaform" name="categoriaform" placeholder="Categorias" size="100" width="50" required>
+        <p>Describa el Problema.</p>
+        <input  class="entrada-soporte" type="text" id="descripcionform" name="descripcionform" placeholder="Escribir.." size="100" required>
+        <p>Ingrese Imagenes.</p>
+        <input type="button" value="Agregar Imagenes">
+        <br>
+        <button id="submit-reporte" type="submit">Enviar</button>
+
+    </div>
+            
+</div>
+{% endblock %}

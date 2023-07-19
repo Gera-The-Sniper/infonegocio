@@ -1,0 +1,25 @@
+{% extends 'core/principal.html' %}
+{% block content %}
+<div class="productocont">
+    <h1 class="pregunta">¿Cómo puedo agregar un producto?</h1>
+    <p class="respuesta">Debes acceder a la sección "Productos" de tu interfaz, hacer clic en el botón "Agregar producto", llenar el
+        formulario con los datos pedidos y hacer clic en "Guardar producto". Todos los campos son requeridos, así que no podrás
+        confirmar la operación hasta que escribas en todos ellos.
+    </p>
+    <hr size="6px" color="aquamarine">
+    <h1 class="pregunta">¿Cómo edito un producto añadido? No logro ver un botón de "Editar producto"</h1>
+    <p class="respuesta">Para editar un producto existente debes buscarlo en la sección "Productos", ya sea en la lista principal o
+        buscando un producto específico, y hacer clic en el botón "modificar" que se encuentra en la esquina inferior derecha de cada
+        producto. Esto le llevará a una interfaz para cambiar los campos que necesite y confirmar las modificaciones.
+    </p>
+    <hr size="6px" color="aquamarine">
+    <h1 class="pregunta">¿Cómo se calculan los reportes mostrados en la sección del mismo nombre?</h1>
+    <p class="respuesta">El producto más visitado se calcula analizando los datos de sus productos, recogiendo el que ha sido más visto
+        en la semana y mostrándolo. Si hay más de un producto con el mismo número de visitas máximas, se mostrarán los productos
+        empatados. Las visitas totales se calculan sumando las visitas de la semana de todos sus productos y mostrándolas.
+        El sector que más visita se calcula analizando las visitas de cada producto que provienen de los distintos sectores de la comuna,
+        realizando una suma total por cada sector, recogiendo el valor máximo de entre ellas y mostrándola junto con el nombre del sector
+        en cuestión.
+    </p>
+</div>
+{% endblock %}

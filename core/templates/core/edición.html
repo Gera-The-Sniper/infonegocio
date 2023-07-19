@@ -1,0 +1,51 @@
+{% extends 'core/principal.html' %}
+{% load static %}
+
+{% block content %}
+{% if datos %}
+<div class="editcont">
+    {% for d in datos %}
+    <form action="/confirmarEdit/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="mb-3">
+        <label for="nombreform" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombreform" name="nombreform" value="{{d.nombre}}" maxlength="50" required>
+        </div>
+        <div class="mb-3">
+        <label for="direcciónform" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direcciónform" name="direcciónform" value="{{d.dirección}}" maxlength="50" required>
+        </div>
+        <div class="mb-3">
+        <label for="teléfonoform" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="teléfonoform" name="teléfonoform" value="{{d.teléfono}}" maxlength="50" required>
+        </div>
+        <div class="mb-3">
+        <label for="giroform" class="form-label">Giro</label>
+        <input type="text" class="form-control" id="giroform" name="giroform" value="{{d.giro}}" maxlength="50" required>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-primary">Guardar datos</button>
+    </form>
+    {% endfor %}
+</div>
+{% elif datos1 %}
+<div class="editcont">
+    {% for d in datos1 %}
+    <form action="/confirmarEdit1/{{cod}}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <div class="mb-3">
+        <label for="nombreform" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombreform" name="nombreform" value="{{d.nombre}}" maxlength="50" required>
+        </div>
+        <div class="mb-3">
+        <label for="direcciónform" class="form-label">Descripción</label>
+        <input type="text" class="form-control" id="descripciónform" name="descripciónform" value="{{d.descripcion}}" maxlength="50" required>
+        </div>
+        <div class="mb-3">
+        <label for="teléfonoform" class="form-label">Stock</label>
+        <input type="text" class="form-control" id="stockform" name="stockform" value="{{d.stock}}" maxlength="50" required>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-primary">Guardar datos</button>
+    </form>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}
+

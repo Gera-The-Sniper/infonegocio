@@ -1,0 +1,102 @@
+{% extends 'core/principal.html' %}
+{% block content %}
+<div class="searchcont">
+    <div class="search">
+        <form action="/buscar/" method="POST" enctype="multipart/form-data" name="buscar" id="busqueda-prod">{% csrf_token %}
+            <i class="fas fa-search"></i>
+            <input type="text" id="busqueda" name="busqueda" placeholder="¡Busca tu producto!">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div class="btnagregar">
+        <a href="interfazagregar"><button class="agregar">Agregar producto</button></a>
+    </div>
+
+
+</div>
+{% if messages %}
+
+    {% for m in messages %}
+    <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible" {% endif %}>
+        {{m}}
+    </div>
+    {% endfor %}
+
+{% endif %}
+{% if datosp %}
+    {% if datosp|length > 0 %}
+    {% for d in datosp %}
+    <div class="productocont">
+        <div class="imgproducto">
+            {% load static %}
+            <img class="imagen-prod" src="{% static 'core/img/producto.png' %}" alt="imagenproducto">
+            
+        </div>
+
+        <div class="infoproducto">
+            <h3 id="nombre-prod">{{d.nombre}}</h3>
+            <h3 id="descripcion-prod">{{d.descripción}}</h3>
+            <h3 id="stock-prod">Stock disponible: {{d.stock}}</h3>
+        </div>
+
+        <div class="boton">
+            <a class="boton-edit" href="/editar1/{{d.Codigo}}"><button class="mod1">modificar *</button></a>
+            <button onclick="confirmar({{d.Codigo}})" class="elim">eliminar -</button></a>
+        </div>
+
+    </div>
+    {% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if datosp.has_previous %}
+                <a href="?page=1">&laquo; Primero</a>
+                <a href="?page={{ datosp.previous_page_number }}">Anterior</a>
+            {% endif %}
+
+            {% for i in datosp.paginator.page_range %}
+                <li class="page-item">
+                    <a href="?page={{i}}" class="page-link">|{{i}}|</a>
+                </li>
+            {% endfor %}
+
+            {% if datosp.has_next %}
+                <a href="?page={{ datosp.next_page_number }}">Siguiente</a>
+                <a href="?page={{ datosp.paginator.num_pages }}">Último &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% else %}
+    <div class="productocont">
+        <h1 class="titulos">No tienes ningún producto, ¡ingresa uno con el botón "agregar"!</h1>
+    </div>
+    {% endif %}
+{% elif datos %}
+    {% if datos|length > 0 %}
+    {% for d in datos %}
+    <div class="productocont">
+        <div class="imgproducto">
+            {% load static %}
+            <img class="imagen-prod" src="{% static 'core/img/producto.png' %}" alt="imagenproducto">
+            
+        </div>
+
+        <div class="infoproducto">
+            <h3 id="nombre-prod">{{d.nombre}}</h3>
+            <h3 id="descripcion-prod">{{d.descripción}}</h3>
+            <h3 id="stock-prod">Stock disponible: {{d.stock}}</h3>
+        </div>
+
+        <div class="boton">
+            <a class="boton-edit" href="/editar1/{{d.Codigo}}"><button class="mod1">modificar *</button></a>
+            <button onclick="confirmar({{d.Codigo}})" class="elim">eliminar -</button></a>
+        </div>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="productocont">
+        <h1 class="titulos">La búsqueda no arrojó ningún resultado, ¡intenta otra!</h1>
+    </div>
+    {% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'core/principal.html' %}
+{% block content %}
+<div class="productocont" id="div-reportes">
+    <div class="masvistos">
+        <i class="fa-solid fa-plus fa-6x"></i>
+        <h1 class="titulos">¡Producto más visitado!</h1>
+        {% for v in datosVisitas %}
+        <h1 class="dato-title">|Nombre|</h1>
+        <h1 class="dato-reporte" id="nombre">{{v.nombre}}</h1>
+        <h1 class="dato-title">|Stock|</h1>
+        <h1 class="dato-reporte" id="visitas">{{v.stock}}</h1>
+        <h1 class="dato-title">|Visitas|</h1>
+        <h1 class="dato-reporte" id="visitas">{{v.visitas}}</h1>
+        {% endfor %}
+    </div>
+
+    <div class="visitas">
+        <i class="fa-solid fa-eye fa-6x"></i>
+        <h1 class="titulos">¡Visitas totales a sus productos!</h1>
+        <h1 class="dato-title" id="visit-totales">{{totales}}</h1>
+    </div>
+    <div class="sector-mas-visit">
+        <i class="fa-solid fa-map-location-dot fa-6x"></i>
+        <h1 class="titulos">¡El sector que más visita!</h1>
+        <h1 class="dato-title">San Pedro De La Paz</h1>
+        <h1 class="dato-title" id="visitas-sector">con 1000 visitas</h1>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/estilo1.css' %}">
+    <script src="{% static 'core/js/funciones.js' %}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Roboto+Mono:wght@200&display=swap'); </style>
+    <script src="https://kit.fontawesome.com/7711da1939.js" crossorigin="anonymous"></script>
+    
+
+</head>
+
+<body>
+
+  
+    <header>
+      <div class="icono-logout"><a href="{% url 'logout' %}"><img id="logout" src="{% static 'core/img/puertaout.png' %}"/></a>
+      </div>
+      <div class="menu">
+        <nav>
+          <ul >
+            <li><a href="{% url 'perfil' %}">Perfil</a></li>
+            <li><a href="{% url 'productos' %}">Productos</a></li>
+            <li><a href="{% url 'reportes' %}">Reportes</a></li>
+            <li><a href="{% url 'soporte' %}">Soporte</a></li>
+            <li><a href="{% url 'FAQ' %}">FAQ</a></li>
+          </ul>
+          
+        <nav>
+          
+      </div>
+      
+    </header>
+    
+
+  <div class="envoltura">
+
+    {% block content %}{% endblock %}
+  </div>
+  
+
+
+
+</body>
+</html>
+
+

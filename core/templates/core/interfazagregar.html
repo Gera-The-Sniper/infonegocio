@@ -1,0 +1,26 @@
+{% extends 'core/principal.html' %}
+{% block content %}
+<div class="agregarprod">
+<form action="/agregar/" method="POST" enctype="multipart/form-data" name="formagre" id="formagre">{% csrf_token %}
+    <input type="hidden" class="form-control" id="codigorandom" name="codigoform">
+        <script>
+            var numerorandom;
+            numerorandom = Math.floor(Math.random()*999);
+            document.formagre.codigorandom.value = numerorandom
+        </script>
+    <div>
+    <label for="precioform" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="precioform" name="nombreform" placeholder="Nombre del producto" maxlength="50" required>
+    </div>
+    <div>
+    <label for="precioform" class="form-label">Descripción</label>
+    <input type="text" class="form-control" id="descripcionform" name="descripcionform" placeholder="Descripción del producto" maxlength="300" required>
+    </div>
+    <div>
+    <label for="precioform" class="form-label">Stock</label>
+    <input type="number" class="form-control" id="stockform" name="stockform" placeholder="Stock del producto" onkeydown="filtro()" required>
+    </div>
+    <button type="submit" value="Submit" class="btn btn-primary">Guardar producto</button>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'core/principal.html' %}
+{% load static %}
+
+{% block content %}
+<div class="descont">
+    {% for d in datos %}
+    <h2 id="des">Descripción negocio</h2>
+    <div class="descripcion">
+        <br>
+            <p> {{d.descripción}}
+            </p>
+    </div>
+</div>
+{% load static %}
+<div class="infoper">
+    <div class="div-img-tienda">
+    <img src="{% static 'core/img/tienda.png' %}" id="tienda-img"/>
+    
+    </div>
+    <div class="datos-tienda">
+        
+        <li class="dato-tienda">Nombre: <p class="dato-for">{{d.nombre}}</p></li>
+        <li class="dato-tienda">Dirección: <p class="dato-for">{{d.dirección}}</p></li>
+        <li class="dato-tienda">Teléfono: <p class="dato-for">{{d.teléfono}}</p></li>
+        <li class="dato-tienda">Correo: <p class="dato-for">{{d.email}}</p></li>
+        <li class="dato-tienda">Giro: <p class="dato-for">{{d.giro}}</p></li>
+        {% endfor %}
+
+        <div class="boton-editar-perfil"><a href="{% url 'editarperfil' %}" class="editar-perfil">Editar perfil&nbsp;✐</a></div>
+    </div>
+</div>
+<div class="mapa">
+    <img src="{% static 'core/img/mapa.png' %}" id="mapita"/>
+</div>
+
+
+{% endblock %}
+

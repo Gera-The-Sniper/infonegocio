@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/css/estilologin.css' %}">
+    <title>Login</title>
+</head>
+<body>
+    {% if request.session.email %}
+    <div class="loginbox">
+        <h1 class="titulos">¡Ya iniciaste sesión, ve a <a id="tu-interfaz" href="{% url 'perfil' %}">tu interfaz!</a></h1>
+        <div class="icono-logout"><a href="{% url 'logout' %}"><img id="logout" src="{% static 'core/img/puertaout.png' %}"/></a>
+        </div>
+    </div>
+    {% else %}
+    <div class="loginbox">
+        <img src="https://i.ibb.co/JkCrPHh/loginlogito2.png" alt="" class="avatar">
+        <h1>InfoNegocio</h1>
+        <form action="/loguear/" method="POST" enctype="multipart/form-data" name="formlog" id="formlog">{% csrf_token %}
+            <p>Email</p>
+            <input type="text" id="emailform" name="emailform" placeholder="Email">
+            <p>Contraseña</p>
+            <input type="password" id="passform" name="passform" placeholder="Contraseña">
+            <input type="submit" value="Login">
+            <a href="#"></a> No recuerdas tu contraseña?<br>
+            <a href="#">Haz click aquí</a>
+        </form>
+        <div class="mensajes-login">
+        {% if messages %}
+
+            {% for m in messages %}
+            <div {% if m.tags %} class="alert alert-{{m.tags}} alert-dismissible" {% endif %}>
+                {{m}}
+            </div>
+            {% endfor %}
+
+        {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
